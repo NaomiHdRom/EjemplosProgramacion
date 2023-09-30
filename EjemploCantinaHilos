@@ -1,0 +1,45 @@
+//EJEMPLO HDELEON ¿QUÉ DEMONIOS SON LOS HILOS?
+
+using System.Threading;
+
+class Program
+{
+
+
+    public static void Cantinero1Atiende()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            Console.WriteLine("Cantinero1 sirve cerveza #"+i);
+            System.Threading.Thread.Sleep(100);
+        }
+    }
+
+    public static void Cantinero2Atiende()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            Console.WriteLine("Cantinero2 sirve cerveza #" + i);
+            System.Threading.Thread.Sleep(100);
+        }
+    }
+
+
+
+    static void Main(string[] args)
+    {
+
+
+        System.Threading.Thread cantinero1 = 
+            new System.Threading.Thread(new System.Threading.ThreadStart(Cantinero1Atiende));
+        System.Threading.Thread cantinero2 =
+           new System.Threading.Thread(new System.Threading.ThreadStart(Cantinero2Atiende));
+
+
+        cantinero1.Start();
+        cantinero2.Start();
+    }
+
+
+
+}
